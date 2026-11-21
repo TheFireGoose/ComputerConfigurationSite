@@ -23,13 +23,27 @@
 </head>
 <body>
     <script>
-        $(function(){
-           
+      $(function(){
+        $(".czesc, #dodatek").change(function(){
+            let suma = 0;
+
+        $(".czesc option:selected").each(function(){
+            if($(this).val() != ""){
+                suma += Number($(this).attr("data-cena"));
+            }
         });
+
+        $("#dodatek:checked").each(function(){
+            suma += Number($(this).attr("data-cena"));
+        });
+
+        $("#suma").text("Suma za wszystkie elementy: " + suma + " zł");
+        });
+    });
     </script>
     
     <label for="cpu">Wybierz procesor:</label>
-    <select id="cpu">
+    <select id="cpu" class="czesc">
         <option value=""></option>
         <option value="Intel i3" data-cena="450">Intel i3 - 450 zl</option>
         <option value="Intel i5" data-cena="850">Intel i5 - 850 zl</option>
@@ -39,7 +53,7 @@
     </select>
     <br>
     <label for="gpu">Wybierz kartę graficzną:</label>
-    <select id="gpu">
+    <select id="gpu" class="czesc">
         <option value="" data-img="karta.jpg"></option>
         <option value="RTX 4050" data-cena="1100">RTX 4050 - 1100 zl</option>
         <option value="RTX 4060" data-cena="1400">RTX 4060 - 1400 zl</option>
@@ -49,7 +63,7 @@
     </select>
     <br>
     <label for="ram">Wybierz pamięć RAM:</label>
-    <select id="ram">
+    <select id="ram" class="czesc">
         <option value=""></option>
         <option value="8 GB RAM" data-cena="150">8 GB - 150 zl</option>
         <option value="16 GB RAM" data-cena="250">16 GB - 250 zl</option>
@@ -59,7 +73,7 @@
     </select>
     <br>
     <label for="dysk">Wybierz dysk:</label>
-    <select id="dysk">
+    <select id="dysk" class="czesc">
         <option value=""></option>
         <option value="SSD 256 GB" data-cena="130">SSD 256 GB - 130 zl</option>
         <option value="SSD 512 GB" data-cena="200">SSD 512 GB - 200 zl</option>
@@ -69,10 +83,13 @@
     </select>
     <br>
     <label for="dodatki">Wybierz dodatki:</label><br>
-        <input type="checkbox" class="dodatek" value="Monitor" data-cena="900">Monitor - 900 zl <br>
-        <input type="checkbox" class="dodatek" value="Klawiatura" data-cena="250">Klawiatura - 250 zl <br>
-        <input type="checkbox" class="dodatek" value="Mysz" data-cena="150">Mysz - 150 zl <br>
-        <input type="checkbox" class="dodatek" value="Sluchawki" data-cena="200">Sluchawki - 200 zl <br>
-        <input type="checkbox" class="dodatek" value="Kamera" data-cena="180">Kamera - 180 zl <br>
+        <input type="checkbox" id="dodatek" value="Monitor" data-cena="900">Monitor - 900 zl <br>
+        <input type="checkbox" id="dodatek" value="Klawiatura" data-cena="250">Klawiatura - 250 zl <br>
+        <input type="checkbox" id="dodatek" value="Mysz" data-cena="150">Mysz - 150 zl <br>
+        <input type="checkbox" id="dodatek" value="Sluchawki" data-cena="200">Sluchawki - 200 zl <br>
+        <input type="checkbox" id="dodatek" value="Kamera" data-cena="180">Kamera - 180 zl <br>
+
+    <br>
+    <p id="suma"></p>
 </body>
 </html>
