@@ -39,6 +39,12 @@
 
         $("#suma").text("Suma za wszystkie elementy: " + suma + " zł");
         });
+        
+        $("#gpu").change(function(){
+            let obrazek = $("#gpu option:selected").attr("data-img");
+            $("#podglad").attr("src", "img/" + obrazek);
+        });
+
     });
     </script>
     
@@ -54,12 +60,11 @@
     <br>
     <label for="gpu">Wybierz kartę graficzną:</label>
     <select id="gpu" class="czesc">
-        <option value="" data-img="karta.jpg"></option>
-        <option value="RTX 4050" data-cena="1100">RTX 4050 - 1100 zl</option>
-        <option value="RTX 4060" data-cena="1400">RTX 4060 - 1400 zl</option>
-        <option value="RTX 4070" data-cena="2800">RTX 4070 - 2800 zl</option>
-        <option value="RTX 4080" data-cena="4600">RTX 4080 - 4600 zl</option>
-        <option value="RTX 4090" data-cena="8500">RTX 4090 - 8500 zl</option>
+        <option value=""></option>
+        <option value="RTX 4060" data-cena="1400" data-img="RTX4060.png">RTX 4060 - 1400 zl</option>
+        <option value="RTX 4070" data-cena="2800" data-img="RTX4070.png">RTX 4070 - 2800 zl</option>
+        <option value="RTX 4080" data-cena="4600" data-img="RTX4080.png">RTX 4080 - 4600 zl</option>
+        <option value="RTX 4090" data-cena="8500" data-img="RTX4090.png">RTX 4090 - 8500 zl</option>
     </select>
     <br>
     <label for="ram">Wybierz pamięć RAM:</label>
@@ -89,6 +94,8 @@
         <input type="checkbox" id="dodatek" value="Sluchawki" data-cena="200">Sluchawki - 200 zl <br>
         <input type="checkbox" id="dodatek" value="Kamera" data-cena="180">Kamera - 180 zl <br>
 
+    <br>
+    <img id="podglad" src="" width="300">
     <br>
     <p id="suma"></p>
 </body>
