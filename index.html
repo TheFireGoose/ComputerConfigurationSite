@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konfigurator</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        select {
+            width: 200px;
+            padding: 5px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        $(function(){
+           
+        });
+    </script>
+    
+    <label for="cpu">Wybierz procesor:</label>
+    <select id="cpu">
+        <option value=""></option>
+        <option value="Intel i3" data-cena="450">Intel i3 - 450 zl</option>
+        <option value="Intel i5" data-cena="850">Intel i5 - 850 zl</option>
+        <option value="Ryzen 5" data-cena="950">Ryzen 5 - 950 zl</option>
+        <option value="Ryzen 7" data-cena="1450">Ryzen 7 - 1450 zl</option>
+        <option value="Intel i7" data-cena="1750">Intel i7 - 1750 zl</option>
+    </select>
+    <br>
+    <label for="gpu">Wybierz kartę graficzną:</label>
+    <select id="gpu">
+        <option value="" data-img="karta.jpg"></option>
+        <option value="RTX 4050" data-cena="1100">RTX 4050 - 1100 zl</option>
+        <option value="RTX 4060" data-cena="1400">RTX 4060 - 1400 zl</option>
+        <option value="RTX 4070" data-cena="2800">RTX 4070 - 2800 zl</option>
+        <option value="RTX 4080" data-cena="4600">RTX 4080 - 4600 zl</option>
+        <option value="RTX 4090" data-cena="8500">RTX 4090 - 8500 zl</option>
+    </select>
+    <br>
+    <label for="ram">Wybierz pamięć RAM:</label>
+    <select id="ram">
+        <option value=""></option>
+        <option value="8 GB RAM" data-cena="150">8 GB - 150 zl</option>
+        <option value="16 GB RAM" data-cena="250">16 GB - 250 zl</option>
+        <option value="32 GB RAM" data-cena="480">32 GB - 480 zl</option>
+        <option value="64 GB RAM" data-cena="950">64 GB - 950 zl</option>
+        <option value="128 GB RAM" data-cena="1800">128 GB - 1800 zl</option>
+    </select>
+    <br>
+    <label for="dysk">Wybierz dysk:</label>
+    <select id="dysk">
+        <option value=""></option>
+        <option value="SSD 256 GB" data-cena="130">SSD 256 GB - 130 zl</option>
+        <option value="SSD 512 GB" data-cena="200">SSD 512 GB - 200 zl</option>
+        <option value="SSD 1 TB" data-cena="350">SSD 1 TB - 350 zl</option>
+        <option value="SSD 2 TB" data-cena="650">SSD 2 TB - 650 zl</option>
+        <option value="SSD 4 TB" data-cena="1200">SSD 4 TB - 1200 zl</option>
+    </select>
+    
+</body>
+</html>
