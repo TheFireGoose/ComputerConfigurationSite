@@ -24,9 +24,9 @@
 <body>
     <script>
       $(function(){
-        $(".czesc, .dodatek").change(function(){
+        $(".czesc, .dodatek, #raty").change(function(){
             let suma = 0;
-
+            let raty = Number($("#raty").val());
         $(".czesc option:selected").each(function(){
             if($(this).val() != ""){
                 suma += Number($(this).attr("data-cena"));
@@ -38,6 +38,7 @@
         });
 
         $("#suma").text("Suma za wszystkie elementy: " + suma + " zł");
+        $("#rata").text("Rata miesieczna: " + (suma / raty).toFixed(2) + " zl");
         });
         
         $("#gpu").change(function(){
@@ -113,5 +114,14 @@
     <p id="suma"></p>
     <h1>Twoj zestaw</h1>
     <ul id="zestaw"></ul>
+    <br>
+    <label for="raty">Wybierz ilosc rat:</label>
+    <select id="raty">
+        <option value="1">1</option>
+        <option value="6">6</option>
+        <option value="12">12</option>
+        <option value="24">24</option>
+    </select>
+    <p id="rata">Rata miesieczna: 0.00 zl</p>
 </body>
 </html>
