@@ -24,7 +24,7 @@
 <body>
     <script>
       $(function(){
-        $(".czesc, #dodatek").change(function(){
+        $(".czesc, .dodatek").change(function(){
             let suma = 0;
 
         $(".czesc option:selected").each(function(){
@@ -33,7 +33,7 @@
             }
         });
 
-        $("#dodatek:checked").each(function(){
+        $(".dodatek:checked").each(function(){
             suma += Number($(this).attr("data-cena"));
         });
 
@@ -45,58 +45,73 @@
             $("#podglad").attr("src", "img/" + obrazek);
         });
 
+        $(".czesc, .dodatek").change(function(){
+                $("#zestaw").empty();
+
+                $(".czesc option:selected").each(function(){
+                    if($(this).val() != ""){
+                        $("#zestaw").append("<li>" + $(this).val() + "</li>");
+                    }
+                });
+
+                $(".dodatek:checked").each(function(){
+                    $("#zestaw").append("<li>" + $(this).val() + "</li>");
+                });
+            });
     });
     </script>
     
     <label for="cpu">Wybierz procesor:</label>
     <select id="cpu" class="czesc">
         <option value=""></option>
-        <option value="Intel i3" data-cena="450">Intel i3 - 450 zl</option>
-        <option value="Intel i5" data-cena="850">Intel i5 - 850 zl</option>
-        <option value="Ryzen 5" data-cena="950">Ryzen 5 - 950 zl</option>
-        <option value="Ryzen 7" data-cena="1450">Ryzen 7 - 1450 zl</option>
-        <option value="Intel i7" data-cena="1750">Intel i7 - 1750 zl</option>
+        <option value="Intel i3 - 450 zl" data-cena="450">Intel i3 - 450 zl</option>
+        <option value="Intel i5 - 850 zl" data-cena="850">Intel i5 - 850 zl</option>
+        <option value="Ryzen 5 - 950 zl" data-cena="950">Ryzen 5 - 950 zl</option>
+        <option value="Ryzen 7 - 1450 zl" data-cena="1450">Ryzen 7 - 1450 zl</option>
+        <option value="Intel i7 - 1750 zl" data-cena="1750">Intel i7 - 1750 zl</option>
     </select>
     <br>
     <label for="gpu">Wybierz kartę graficzną:</label>
     <select id="gpu" class="czesc">
         <option value=""></option>
-        <option value="RTX 4060" data-cena="1400" data-img="RTX4060.png">RTX 4060 - 1400 zl</option>
-        <option value="RTX 4070" data-cena="2800" data-img="RTX4070.png">RTX 4070 - 2800 zl</option>
-        <option value="RTX 4080" data-cena="4600" data-img="RTX4080.png">RTX 4080 - 4600 zl</option>
-        <option value="RTX 4090" data-cena="8500" data-img="RTX4090.png">RTX 4090 - 8500 zl</option>
+        <option value="RTX 4060 - 1400 zl" data-cena="1400" data-img="RTX4060.png">RTX 4060 - 1400 zl</option>
+        <option value="RTX 4070 - 2800 zl" data-cena="2800" data-img="RTX4070.png">RTX 4070 - 2800 zl</option>
+        <option value="RTX 4080 - 4600 zl" data-cena="4600" data-img="RTX4080.png">RTX 4080 - 4600 zl</option>
+        <option value="RTX 4090 - 8500 zl" data-cena="8500" data-img="RTX4090.png">RTX 4090 - 8500 zl</option>
     </select>
     <br>
     <label for="ram">Wybierz pamięć RAM:</label>
     <select id="ram" class="czesc">
         <option value=""></option>
-        <option value="8 GB RAM" data-cena="150">8 GB - 150 zl</option>
-        <option value="16 GB RAM" data-cena="250">16 GB - 250 zl</option>
-        <option value="32 GB RAM" data-cena="480">32 GB - 480 zl</option>
-        <option value="64 GB RAM" data-cena="950">64 GB - 950 zl</option>
-        <option value="128 GB RAM" data-cena="1800">128 GB - 1800 zl</option>
+        <option value="8 GB RAM - 150 zl" data-cena="150">8 GB - 150 zl</option>
+        <option value="16 GB RAM - 250 zl" data-cena="250">16 GB - 250 zl</option>
+        <option value="32 GB RAM - 480 zl" data-cena="480">32 GB - 480 zl</option>
+        <option value="64 GB RAM - 950 zl" data-cena="950">64 GB - 950 zl</option>
+        <option value="128 GB RAM - 1800 zl" data-cena="1800">128 GB - 1800 zl</option>
     </select>
     <br>
     <label for="dysk">Wybierz dysk:</label>
     <select id="dysk" class="czesc">
         <option value=""></option>
-        <option value="SSD 256 GB" data-cena="130">SSD 256 GB - 130 zl</option>
-        <option value="SSD 512 GB" data-cena="200">SSD 512 GB - 200 zl</option>
-        <option value="SSD 1 TB" data-cena="350">SSD 1 TB - 350 zl</option>
-        <option value="SSD 2 TB" data-cena="650">SSD 2 TB - 650 zl</option>
-        <option value="SSD 4 TB" data-cena="1200">SSD 4 TB - 1200 zl</option>
+        <option value="SSD 256 GB - 130 zl" data-cena="130">SSD 256 GB - 130 zl</option>
+        <option value="SSD 512 GB - 200 zl" data-cena="200">SSD 512 GB - 200 zl</option>
+        <option value="SSD 1 TB - 350 zl" data-cena="350">SSD 1 TB - 350 zl</option>
+        <option value="SSD 2 TB - 650 zl" data-cena="650">SSD 2 TB - 650 zl</option>
+        <option value="SSD 4 TB - 1200 zl" data-cena="1200">SSD 4 TB - 1200 zl</option>
     </select>
     <br>
     <label for="dodatki">Wybierz dodatki:</label><br>
-        <input type="checkbox" id="dodatek" value="Monitor" data-cena="900">Monitor - 900 zl <br>
-        <input type="checkbox" id="dodatek" value="Klawiatura" data-cena="250">Klawiatura - 250 zl <br>
-        <input type="checkbox" id="dodatek" value="Mysz" data-cena="150">Mysz - 150 zl <br>
-        <input type="checkbox" id="dodatek" value="Sluchawki" data-cena="200">Sluchawki - 200 zl <br>
-        <input type="checkbox" id="dodatek" value="Kamera" data-cena="180">Kamera - 180 zl <br>
+        <input type="checkbox" class="dodatek" value="Monitor - 900 zl" data-cena="900">Monitor - 900 zl <br>
+        <input type="checkbox" class="dodatek" value="Klawiatura - 250 zl" data-cena="250">Klawiatura - 250 zl <br>
+        <input type="checkbox" class="dodatek" value="Mysz - 150 zl" data-cena="150">Mysz - 150 zl <br>
+        <input type="checkbox" class="dodatek" value="Sluchawki - 200 zl" data-cena="200">Sluchawki - 200 zl <br>
+        <input type="checkbox" class="dodatek" value="Kamera - 180 zl" data-cena="180">Kamera - 180 zl <br>
 
     <br>
     <img id="podglad" src="" width="300">
     <br>
     <p id="suma"></p>
+    <h1>Twoj zestaw</h1>
+    <ul id="zestaw"></ul>
 </body>
 </html>
