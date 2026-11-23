@@ -24,9 +24,15 @@
 <body>
     <script>
       $(function(){
-        $(".czesc, .dodatek, #raty").change(function(){
-            let suma = 0;
-            let raty = Number($("#raty").val());
+       function przelicz(){
+        let suma = 0;
+        let raty = Number($("#raty").val());
+        let budzet = $("#budzet").val().trim();
+
+        $("#zestaw").empty();
+        $("#blad").text("");
+        $("#ostrzezenie").text("");
+
         $(".czesc option:selected").each(function(){
             if($(this).val() != ""){
                 suma += Number($(this).attr("data-cena"));
@@ -39,6 +45,32 @@
 
         $("#suma").text("Suma za wszystkie elementy: " + suma + " zł");
         $("#rata").text("Rata miesieczna: " + (suma / raty).toFixed(2) + " zl");
+
+
+        $(".czesc option:selected").each(function(){
+            if($(this).val() != ""){
+                $("#zestaw").append("<li>" + $(this).val() + "</li>");
+            }   
+        });
+        
+        $(".dodatek:checked").each(function(){
+            $("#zestaw").append("<li>" + $(this).val() + "</li>");
+         }); 
+        if(budzet != ""){
+            if(isNaN(budzet) || Number(budzet) <= 0){
+                $("#blad").text("Budzet musi byc liczba").css("color", "red");
+            } else if(suma > Number(budzet)){
+                $("#ostrzezenie").text("Przekroczono budzet").css("color", "red");
+            }
+        }
+
+       }
+        $(".czesc, .dodatek, #raty").change(function(){
+            przelicz();    
+        });
+
+        $("#budzet").on("input", function(){
+            przelicz();
         });
         
         $("#gpu").change(function(){
@@ -46,38 +78,7 @@
             $("#podglad").attr("src", "img/" + obrazek);
         });
 
-        $(".czesc, .dodatek").change(function(){
-            $("#zestaw").empty();
-
-            $(".czesc option:selected").each(function(){
-                if($(this).val() != ""){
-                    $("#zestaw").append("<li>" + $(this).val() + "</li>");
-                }
-            });
-
-            $(".dodatek:checked").each(function(){
-                $("#zestaw").append("<li>" + $(this).val() + "</li>");
-            });
-        });
-
-
-
-
         
-        // $("#budzet").on("input", function(){
-        //     let budzet = $("#budzet").val().trim();
-
-        //     $("#blad").text("");
-        //     $("#ostrzezenie").text("");
-            
-        //     if(budzet != ""){
-        //         if(isNaN(budzet) || Number(budzet) <= 0){
-        //             $("#blad").text("Budzet musi byc liczba").css("color", "red");
-        //         } else if(suma > Number(budzet)){
-        //             $("#ostrzezenie").text("Przekroczono budzet").css("color", "red");
-        //         }
-        //     }
-        //     });
     });
     </script>
     
