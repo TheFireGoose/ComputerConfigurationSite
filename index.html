@@ -47,18 +47,37 @@
         });
 
         $(".czesc, .dodatek").change(function(){
-                $("#zestaw").empty();
+            $("#zestaw").empty();
 
-                $(".czesc option:selected").each(function(){
-                    if($(this).val() != ""){
-                        $("#zestaw").append("<li>" + $(this).val() + "</li>");
-                    }
-                });
-
-                $(".dodatek:checked").each(function(){
+            $(".czesc option:selected").each(function(){
+                if($(this).val() != ""){
                     $("#zestaw").append("<li>" + $(this).val() + "</li>");
-                });
+                }
             });
+
+            $(".dodatek:checked").each(function(){
+                $("#zestaw").append("<li>" + $(this).val() + "</li>");
+            });
+        });
+
+
+
+
+        
+        // $("#budzet").on("input", function(){
+        //     let budzet = $("#budzet").val().trim();
+
+        //     $("#blad").text("");
+        //     $("#ostrzezenie").text("");
+            
+        //     if(budzet != ""){
+        //         if(isNaN(budzet) || Number(budzet) <= 0){
+        //             $("#blad").text("Budzet musi byc liczba").css("color", "red");
+        //         } else if(suma > Number(budzet)){
+        //             $("#ostrzezenie").text("Przekroczono budzet").css("color", "red");
+        //         }
+        //     }
+        //     });
     });
     </script>
     
@@ -123,5 +142,11 @@
         <option value="24">24</option>
     </select>
     <p id="rata">Rata miesieczna: 0.00 zl</p>
+    <br>
+    <label for="budzet">Podaj swoj budzet:</label>
+    <input type="text" id="budzet">
+
+    <p id="blad"></p>
+    <p id="ostrzezenie"></p>
 </body>
 </html>
