@@ -52,7 +52,7 @@
                 $("#zestaw").append("<li>" + $(this).val() + "</li>");
             }   
         });
-        
+
         $(".dodatek:checked").each(function(){
             $("#zestaw").append("<li>" + $(this).val() + "</li>");
          }); 
@@ -78,6 +78,13 @@
             $("#podglad").attr("src", "img/" + obrazek);
         });
 
+        $("#reset").click(function(){
+            $("select").each(function(){
+                $(this).prop("selectedIndex", 0);
+            });
+            $(".dodatek").prop("checked", false);
+            $("#budzet").val("");
+        });
         
     });
     </script>
@@ -149,5 +156,6 @@
 
     <p id="blad"></p>
     <p id="ostrzezenie"></p>
+    <button type="button" id="reset">Resetuj konfiguracje</button>
 </body>
 </html>
