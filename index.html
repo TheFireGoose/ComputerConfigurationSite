@@ -80,10 +80,11 @@
 
         $("#reset").click(function(){
             $("select").each(function(){
-                $(this).prop("selectedIndex", 0);
+                $(this).prop("selectedIndex", 0).change();
             });
             $(".dodatek").prop("checked", false);
             $("#budzet").val("");
+            $("#podglad").attr("src", "");
         });
         
     });
