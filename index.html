@@ -65,6 +65,19 @@
         }
 
        }
+       function ustaw(cpu,motherboard,psu,gpu,ram,dysk, dodatki = []){
+            $("#cpu").val(cpu)
+            $("#motherboard").val(motherboard)
+            $("#psu").val(psu)
+            $("#gpu").val(gpu)
+            $("#ram").val(ram)
+            $("#dysk").val(dysk)
+            $(".dodatek").prop("checked",false)
+
+            dodatki.forEach(function(nazwa) {
+                $('.dodatek[value="' + nazwa + '"]').prop("checked", true);
+            });
+        }
         $(".czesc, .dodatek, #raty").change(function(){
             przelicz();    
         });
@@ -87,9 +100,50 @@
             $("#podglad").attr("src", "");
         });
         
+        $("#biuro").click(function() {
+        ustaw(
+            "Intel i3 - 450 zl",
+            "Gigabyte H610M (Intel) - 350 zl",
+            "SilentiumPC Elementum E2 550W - 220 zl",
+            "RTX 4060 - 1400 zl", 
+            "16 GB RAM - 250 zl",
+            "SSD 512 GB - 200 zl",
+            ["Monitor - 900 zl", "Klawiatura - 250 zl", "Mysz - 150 zl"]
+            );
+            przelicz()
+        });
+
+        $("#gaming").click(function() {
+            ustaw(
+                "Ryzen 5 - 950 zl",
+                "ASUS TUF Gaming B650-PLUS (AMD) - 850 zl",
+                "Corsair RM750e 750W Gold - 520 zl",
+                "RTX 4070 - 2800 zl",
+                "32 GB RAM - 480 zl",
+                "SSD 1 TB - 350 zl",
+                ["Monitor - 900 zl", "Klawiatura - 250 zl", "Mysz - 150 zl", "Sluchawki - 200 zl"]
+            );
+            przelicz()
+        });
+
+        $("#streaming").click(function() {
+            ustaw(
+                "Intel i7 - 1750 zl",
+                "MSI MAG Z790 Tomahawk (Intel) - 1150 zl",
+                "Pure Power 12 M 850W Gold - 650 zl",
+                "RTX 4090 - 8500 zl",
+                "64 GB RAM - 950 zl",
+                "SSD 2 TB - 650 zl",
+                ["Monitor - 900 zl", "Klawiatura - 250 zl", "Mysz - 150 zl", "Sluchawki - 200 zl", "Kamera - 180 zl"]
+            );
+            przelicz()
+        });
+        
     });
     </script>
-    
+    <button type="button" id="biuro">Biuro</button>
+    <button type="button" id="gaming">Gaming</button>
+    <button type="button" id="streaming">Streaming</button>
     <label for="cpu">Wybierz procesor:</label>
     <select id="cpu" class="czesc">
         <option value=""></option>
@@ -99,14 +153,33 @@
         <option value="Ryzen 7 - 1450 zl" data-cena="1450">Ryzen 7 - 1450 zl</option>
         <option value="Intel i7 - 1750 zl" data-cena="1750">Intel i7 - 1750 zl</option>
     </select>
+    <label for="motherboard">Wybierz plyte glowna:</label>
+    <select id="motherboard" class="czesc">
+        <option value=""></option>
+        <option value="Gigabyte H610M (Intel) - 350 zl" data-cena="350" data-base="Intel">Gigabyte H610M (Intel) - 350 zl</option>
+        <option value="ASRock B550M Pro4 (AMD) - 450 zl" data-cena="450" >ASRock B550M Pro4 (AMD) - 450 zl</option>
+        <option value="MSI B760 Gaming Plus (Intel) - 650 zl" data-cena="650" data-base="Intel">MSI B760 Gaming Plus (Intel) - 650 zl</option>
+        <option value="ASUS TUF Gaming B650-PLUS (AMD) - 850 zl" data-cena="850" data-base="AMD">ASUS TUF Gaming B650-PLUS (AMD) - 850 zl</option>
+        <option value="MSI MAG Z790 Tomahawk (Intel) - 1150 zl" data-cena="1150" data-base="Intel">MSI MAG Z790 Tomahawk (Intel) - 1150 zl</option>
+    </select>
+    <label for="psu">Wybierz zasilacz:</label>
+    <select id="psu" class="czesc">
+        <option value=""></option>
+        <option value="SilentiumPC Elementum E2 550W - 220 zl" data-cena="220" data-power="550">SilentiumPC Elementum E2 550W - 220 zl</option>
+        <option value="System Power 10 650W - 320 zl" data-cena="320" data-power="650">System Power 10 650W - 320 zl</option>
+        <option value="ENDORFY Vero L5 Bronze 700W - 350 zl" data-cena="350" data-power="700">ENDORFY Vero L5 Bronze 700W - 350 zl</option>
+        <option value="Corsair RM750e 750W Gold - 520 zl" data-cena="520" data-power="750">Corsair RM750e 750W Gold - 520 zl</option>
+        <option value="Pure Power 12 M 850W Gold - 650 zl" data-cena="650" data-power="850">Pure Power 12 M 850W Gold - 650 zl</option>
+    </select>
+
     <br>
     <label for="gpu">Wybierz kartę graficzną:</label>
     <select id="gpu" class="czesc">
         <option value=""></option>
-        <option value="RTX 4060 - 1400 zl" data-cena="1400" data-img="RTX4060.png">RTX 4060 - 1400 zl</option>
-        <option value="RTX 4070 - 2800 zl" data-cena="2800" data-img="RTX4070.png">RTX 4070 - 2800 zl</option>
-        <option value="RTX 4080 - 4600 zl" data-cena="4600" data-img="RTX4080.png">RTX 4080 - 4600 zl</option>
-        <option value="RTX 4090 - 8500 zl" data-cena="8500" data-img="RTX4090.png">RTX 4090 - 8500 zl</option>
+        <option value="RTX 4060 - 1400 zl" data-cena="1400" data-img="RTX4060.png" data-neededpower="550">RTX 4060 - 1400 zl</option>
+        <option value="RTX 4070 - 2800 zl" data-cena="2800" data-img="RTX4070.png" data-neededpower="650">RTX 4070 - 2800 zl</option>
+        <option value="RTX 4080 - 4600 zl" data-cena="4600" data-img="RTX4080.png" data-neededpower="750">RTX 4080 - 4600 zl</option>
+        <option value="RTX 4090 - 8500 zl" data-cena="8500" data-img="RTX4090.png" data-neededpower="850">RTX 4090 - 8500 zl</option>
     </select>
     <br>
     <label for="ram">Wybierz pamięć RAM:</label>
